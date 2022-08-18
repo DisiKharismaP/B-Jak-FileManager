@@ -314,54 +314,45 @@ if ($use_auth) {
         unset($_SESSION[FM_SESSION_ID]['logged']);
         fm_show_header_login();
         ?>
-        <section class="h-100">
-            <div class="container h-100">
-                <div class="row justify-content-md-center h-100">
-                    <div class="card-wrapper">
-                        <div class="card fat <?php echo fm_get_theme(); ?>">
-                            <div class="card-body">
-                                <form class="form-signin" action="" method="post" autocomplete="off">
-                                    <div class="form-group">
-                                       <div class="brand">
-                                            <img src="/logo.png", alt="Logo Image", style="width: 100px;height: 100px">
-                                        </div>
-                                        <br>
-                                        <div class="text-center">
-                                            <h1 class="card-title"><?php echo APP_TITLE; ?></h1>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="form-group">
-                                        <label for="fm_usr"><?php echo lng('Username'); ?></label>
-                                        <input type="text" class="form-control" id="fm_usr" name="fm_usr" required autofocus>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="fm_pwd"><?php echo lng('Password'); ?></label>
-                                        <input type="password" class="form-control" id="fm_pwd" name="fm_pwd" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <?php fm_show_message(); ?>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block mt-4" role="button">
-                                            <?php echo lng('Login'); ?>
-                                        </button>
-                                    </div>
-                                </form>
+    <section class="h-100" >
+        <div class="row justify-content-center w-50 h-100" style="margin-top: 60px;">
+            <div class="card-wrapper " style=" padding: 70px 0;">
+                <div class="card fat <?php echo fm_get_theme(); ?>" >
+                    <div class="card-body" >
+                        <h4 >Login to your account</h4>
+                        <form class="form-signin" action="" method="post" autocomplete="off">
+                            <div class="form-group">
+                                <label for="fm_usr"><?php echo lng('Username'); ?></label>
+                                <input type="text" class="form-control" id="fm_usr" name="fm_usr" required autofocus>
                             </div>
-                        </div>
-                        <div class="footer text-center">
-                            &mdash;&mdash; &copy;
-                            <a >Devops Team</a> &mdash;&mdash;
-                        </div>
+
+                            <div class="form-group">
+                                <label for="fm_pwd"><?php echo lng('Password'); ?></label>
+                                <input type="password" class="form-control" id="fm_pwd" name="fm_pwd" required>
+                            </div>
+
+                            <div class="form-group">
+                                <?php fm_show_message(); ?>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block " role="button">
+                                    <?php echo lng('Login'); ?>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </section>
 
+                <div class="footer text-center">
+                    &copy;
+                    <a > Balai Monitor SFR Kelas I Jakarta 2022 </a> 
+                </div>
+            </div>
+        </div>     
+    </section>
+  
         <?php
         fm_show_footer_login();
         exit;
@@ -1242,14 +1233,14 @@ if (isset($_GET['upload']) && !FM_READONLY) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet">
     <div class="path">
 
-        <div class="card mb-2 fm-upload-wrapper <?php echo fm_get_theme(); ?>">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
+        <div class="card mb-2 fm-upload-wrapper <?php echo fm_get_theme(); ?>" style="border-radius: 15px;">
+            <div class="card-header" style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+                <ul class="nav nav-tabs card-header-tabs" style="margin-left: 20px; margin-top: 10px;">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#fileUploader" data-target="#fileUploader"><i class="fa fa-arrow-circle-o-up"></i> <?php echo lng('UploadingFiles') ?></a>
+                        <a class="nav-link active" href="#fileUploader" data-target="#fileUploader"> <?php echo lng('UploadingFiles') ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#urlUploader" class="js-url-upload" data-target="#urlUploader"><i class="fa fa-link"></i> Upload from URL</a>
+                        <a class="nav-link" href="#urlUploader" class="js-url-upload" data-target="#urlUploader"> Upload from URL</a>
                     </li>
                 </ul>
             </div>
@@ -1262,6 +1253,7 @@ if (isset($_GET['upload']) && !FM_READONLY) {
                 <form action="<?php echo htmlspecialchars(FM_SELF_URL) . '?p=' . fm_enc(FM_PATH) ?>" class="dropzone card-tabs-container" id="fileUploader" enctype="multipart/form-data">
                     <input type="hidden" name="p" value="<?php echo fm_enc(FM_PATH) ?>">
                     <input type="hidden" name="fullpath" id="fullpath" value="<?php echo fm_enc(FM_PATH) ?>">
+                    <img class="center" src="/upload.png" width="70px" height="45px" alt="img-upload" style="margin-top: 25px;">
                     <div class="fallback">
                         <input name="file" type="file" multiple/>
                     </div>
@@ -1271,13 +1263,18 @@ if (isset($_GET['upload']) && !FM_READONLY) {
                     <form id="js-form-url-upload" class="form-inline" onsubmit="return upload_from_url(this);" method="POST" action="">
                         <input type="hidden" name="type" value="upload" aria-label="hidden" aria-hidden="true">
                         <input type="url" placeholder="URL" name="uploadurl" required class="form-control" style="width: 80%">
-                        <button type="submit" class="btn btn-primary ml-3"><?php echo lng('Upload') ?></button>
+                        <button type="submit" class="btn btn-upload" ><?php echo lng('Upload') ?></button>
                         <div class="lds-facebook"><div></div><div></div><div></div></div>
                     </form>
                     <div id="js-url-upload__list" class="col-9 mt-3"></div>
                 </div>
             </div>
         </div>
+
+        <div class="footer" >
+             <p>File Manager - Devops Team -</p>
+        </div>
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script>
@@ -1412,10 +1409,10 @@ if (isset($_GET['settings']) && !FM_READONLY) {
     ?>
 
     <div class="col-md-8 offset-md-2 pt-3">
-        <div class="card mb-2 <?php echo fm_get_theme(); ?>">
-            <h6 class="card-header">
-                <i class="fa fa-cog"></i>  <?php echo lng('Settings') ?>
-                <a href="?p=<?php echo FM_PATH ?>" class="float-right"><i class="fa fa-window-close"></i> <?php echo lng('Cancel')?></a>
+        <div class="card mb-2 <?php echo fm_get_theme(); ?>" style="border-radius:15px;" >
+            <h6 class="card-header-setting" style="border-top-left-radius: 15px;border-top-right-radius: 15px;padding-top:20px;padding-bottom:20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1.3em" height="1.3em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="#fff" d="M512.5 390.6c-29.9 0-57.9 11.6-79.1 32.8c-21.1 21.2-32.8 49.2-32.8 79.1c0 29.9 11.7 57.9 32.8 79.1c21.2 21.1 49.2 32.8 79.1 32.8c29.9 0 57.9-11.7 79.1-32.8c21.1-21.2 32.8-49.2 32.8-79.1c0-29.9-11.7-57.9-32.8-79.1a110.96 110.96 0 0 0-79.1-32.8zm412.3 235.5l-65.4-55.9c3.1-19 4.7-38.4 4.7-57.7s-1.6-38.8-4.7-57.7l65.4-55.9a32.03 32.03 0 0 0 9.3-35.2l-.9-2.6a442.5 442.5 0 0 0-79.6-137.7l-1.8-2.1a32.12 32.12 0 0 0-35.1-9.5l-81.2 28.9c-30-24.6-63.4-44-99.6-57.5l-15.7-84.9a32.05 32.05 0 0 0-25.8-25.7l-2.7-.5c-52-9.4-106.8-9.4-158.8 0l-2.7.5a32.05 32.05 0 0 0-25.8 25.7l-15.8 85.3a353.44 353.44 0 0 0-98.9 57.3l-81.8-29.1a32 32 0 0 0-35.1 9.5l-1.8 2.1a445.93 445.93 0 0 0-79.6 137.7l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.2 56.5c-3.1 18.8-4.6 38-4.6 57c0 19.2 1.5 38.4 4.6 57l-66 56.5a32.03 32.03 0 0 0-9.3 35.2l.9 2.6c18.1 50.3 44.8 96.8 79.6 137.7l1.8 2.1a32.12 32.12 0 0 0 35.1 9.5l81.8-29.1c29.8 24.5 63 43.9 98.9 57.3l15.8 85.3a32.05 32.05 0 0 0 25.8 25.7l2.7.5a448.27 448.27 0 0 0 158.8 0l2.7-.5a32.05 32.05 0 0 0 25.8-25.7l15.7-84.9c36.2-13.6 69.6-32.9 99.6-57.5l81.2 28.9a32 32 0 0 0 35.1-9.5l1.8-2.1c34.8-41.1 61.5-87.4 79.6-137.7l.9-2.6c4.3-12.4.6-26.3-9.5-35zm-412.3 52.2c-97.1 0-175.8-78.7-175.8-175.8s78.7-175.8 175.8-175.8s175.8 78.7 175.8 175.8s-78.7 175.8-175.8 175.8z"/></svg>  <?php echo lng('Settings') ?>
+                <a href="?p=<?php echo FM_PATH ?>" class="cancel-settings"> <?php echo lng('Cancel')?></a>
             </h6>
             <div class="card-body">
                 <form id="js-settings-form" action="" method="post" data-type="ajax" onsubmit="return save_settings(this)">
@@ -1452,10 +1449,10 @@ if (isset($_GET['settings']) && !FM_READONLY) {
                         <label for="js-err-rpt-1" class="col-sm-3 col-form-label"><?php echo lng('ErrorReporting') ?></label>
                         <div class="col-sm-9">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary <?php echo getChecked($report_errors, 1, 'active') ?>">
+                                <label class="btn btn-primary <?php echo getChecked($report_errors, 1, 'active') ?>">
                                     <input type="radio" name="js-error-report" id="js-err-rpt-1" autocomplete="off" value="true" <?php echo getChecked($report_errors, 1, 'checked') ?> > ON
                                 </label>
-                                <label class="btn btn-secondary <?php echo getChecked($report_errors, '', 'active') ?>">
+                                <label class="btn btn-primary <?php echo getChecked($report_errors, '', 'active') ?>">
                                     <input type="radio" name="js-error-report" id="js-err-rpt-0" autocomplete="off" value="false" <?php echo getChecked($report_errors, '', 'checked') ?> > OFF
                                 </label>
                             </div>
@@ -1466,25 +1463,11 @@ if (isset($_GET['settings']) && !FM_READONLY) {
                         <label for="js-hdn-1" class="col-sm-3 col-form-label"><?php echo lng('ShowHiddenFiles') ?></label>
                         <div class="col-sm-9">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary <?php echo getChecked($show_hidden_files, 1, 'active') ?>">
+                                <label class="btn btn-primary <?php echo getChecked($show_hidden_files, 1, 'active') ?>">
                                     <input type="radio" name="js-show-hidden" id="js-hdn-1" autocomplete="off" value="true" <?php echo getChecked($show_hidden_files, 1, 'checked') ?> > ON
                                 </label>
-                                <label class="btn btn-secondary <?php echo getChecked($show_hidden_files, '', 'active') ?>">
+                                <label class="btn btn-primary <?php echo getChecked($show_hidden_files, '', 'active') ?>">
                                     <input type="radio" name="js-show-hidden" id="js-hdn-0" autocomplete="off" value="false" <?php echo getChecked($show_hidden_files, '', 'checked') ?> > OFF
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="js-hid-1" class="col-sm-3 col-form-label"><?php echo lng('HideColumns') ?></label>
-                        <div class="col-sm-9">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary <?php echo getChecked($hide_Cols, 1, 'active') ?>">
-                                    <input type="radio" name="js-hide-cols" id="js-hid-1" autocomplete="off" value="true" <?php echo getChecked($hide_Cols, 1, 'checked') ?> > ON
-                                </label>
-                                <label class="btn btn-secondary <?php echo getChecked($hide_Cols, '', 'active') ?>">
-                                    <input type="radio" name="js-hide-cols" id="js-hid-0" autocomplete="off" value="false" <?php echo getChecked($hide_Cols, '', 'checked') ?> > OFF
                                 </label>
                             </div>
                         </div>
@@ -1494,10 +1477,10 @@ if (isset($_GET['settings']) && !FM_READONLY) {
                         <label for="js-dir-1" class="col-sm-3 col-form-label"><?php echo lng('CalculateFolderSize') ?></label>
                         <div class="col-sm-9">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary <?php echo getChecked($calc_folder, 1, 'active') ?>">
+                                <label class="btn btn-primary <?php echo getChecked($calc_folder, 1, 'active') ?>">
                                     <input type="radio" name="js-calc-folder" id="js-dir-1" autocomplete="off" value="true" <?php echo getChecked($calc_folder, 1, 'checked') ?> > ON
                                 </label>
-                                <label class="btn btn-secondary <?php echo getChecked($calc_folder, '', 'active') ?>">
+                                <label class="btn btn-primary <?php echo getChecked($calc_folder, '', 'active') ?>">
                                     <input type="radio" name="js-calc-folder" id="js-dir-0" autocomplete="off" value="false" <?php echo getChecked($calc_folder, '', 'checked') ?> > OFF
                                 </label>
                             </div>
@@ -1515,8 +1498,8 @@ if (isset($_GET['settings']) && !FM_READONLY) {
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-success"> <i class="fa fa-check-circle"></i> <?php echo lng('Save'); ?></button>
+                        <div class="col-sm-12" >
+                            <button type="submit" class="btn btn-save"> <?php echo lng('Save'); ?></button>
                         </div>
                     </div>
 
@@ -1524,38 +1507,39 @@ if (isset($_GET['settings']) && !FM_READONLY) {
             </div>
         </div>
     </div>
+
+    <div class="footer" >
+             <p>File Manager - Devops Team -</p>
+        </div>
     <?php
     fm_show_footer();
     exit;
 }
 
-if (isset($_GET['help'])) {
+if (isset($_GET['info'])) {
     fm_show_header(); // HEADER
     fm_show_nav_path(FM_PATH); // current path
     global $cfg, $lang;
     ?>
 
-    <div class="col-md-8 offset-md-2 pt-3">
-        <div class="card mb-2 <?php echo fm_get_theme(); ?>">
-            <h6 class="card-header">
-                <i class="fa fa-exclamation-circle"></i> <?php echo lng('Help') ?>
-                <a href="?p=<?php echo FM_PATH ?>" class="float-right"><i class="fa fa-window-close"></i> <?php echo lng('Cancel')?></a>
+<div class="col-md-8 offset-md-2 pt-3">
+        <div class="card mb-2 <?php echo fm_get_theme(); ?> "  style="border-radius: 10px;">
+            <h6 class="card-header-info" style="border-top-left-radius: 10px;border-top-right-radius: 10px;padding-top:20px;padding-bottom:20px;">
+                <i><svg style="margin-right: 5px; margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="white" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0Zm-1-7a1 1 0 1 1 1-1a1 1 0 0 1-1 1Z"/></svg></i> <?php echo lng('Info') ?>
+                <a href="?p=<?php echo FM_PATH ?>" class="cancel-info"> <?php echo lng('Cancel')?></a>
             </h6>
             <div class="card-body">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <p><h3><a href="https://github.com/prasathmani/tinyfilemanager" target="_blank" class="app-v-title"> Tiny File Manager <?php echo VERSION; ?></a></h3></p>
-                        <p>Author: Prasath Mani</p>
-                        <p>Mail Us: <a href="mailto:ccpprogrammers@gmail.com">ccpprogrammers[at]gmail.com</a> </p>
+                        <p><h3>File Manager </h3></p>
+                        <p>Developer : Balmon Jakarta Devops Team </p>
+                        <p>Mail Us : <a href="mailto:example@gmail.com">example@gmail.com</a> </p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div class="card">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a href="https://github.com/prasathmani/tinyfilemanager/wiki" target="_blank"><i class="fa fa-question-circle"></i> <?php echo lng('Help Documents') ?> </a> </li>
-                                <li class="list-group-item"><a href="https://github.com/prasathmani/tinyfilemanager/issues" target="_blank"><i class="fa fa-bug"></i> <?php echo lng('Report Issue') ?></a></li>
-                                <li class="list-group-item"><a href="javascript:latest_release_info('<?php echo VERSION; ?>');"><i class="fa fa-link"> </i> <?php echo lng('Check Latest Version') ?></a></li>
                                 <?php if(!FM_READONLY) { ?>
-                                <li class="list-group-item"><a href="javascript:show_new_pwd();"><i class="fa fa-lock"></i> <?php echo lng('Generate new password hash') ?></a></li>
+                                <li class="list-group-item"><a href="javascript:show_new_pwd();"><svg style="margin-right: 5px; margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="black" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0Zm-1-7a1 1 0 1 1 1-1a1 1 0 0 1-1 1Z"/></svg> <?php echo lng('Generate new password hash') ?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>
@@ -1580,6 +1564,7 @@ if (isset($_GET['help'])) {
             </div>
         </div>
     </div>
+
     <?php
     fm_show_footer();
     exit;
@@ -2156,30 +2141,34 @@ $tableTheme = (FM_THEME == "dark") ? "text-white bg-dark table-dark" : "bg-white
         </table>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom: 100px;">
         <?php if (!FM_READONLY): ?>
         <div class="col-xs-12 col-sm-9">
             <ul class="list-inline footer-action">
-                <li class="list-inline-item"> <a href="#/select-all" class="btn btn-small btn-outline-primary btn-2" onclick="select_all();return false;"><i class="fa fa-check-square"></i> <?php echo lng('SelectAll') ?> </a></li>
-                <li class="list-inline-item"><a href="#/unselect-all" class="btn btn-small btn-outline-primary btn-2" onclick="unselect_all();return false;"><i class="fa fa-window-close"></i> <?php echo lng('UnSelectAll') ?> </a></li>
-                <li class="list-inline-item"><a href="#/invert-all" class="btn btn-small btn-outline-primary btn-2" onclick="invert_all();return false;"><i class="fa fa-th-list"></i> <?php echo lng('InvertSelection') ?> </a></li>
+                <li class="list-inline-item"> <a href="#/select-all" class="btn btn-table-footer" onclick="select_all();return false;"><i class="fa fa-check-square"></i> <?php echo lng('SelectAll') ?> </a></li>
+                <li class="list-inline-item"><a href="#/unselect-all" class="btn btn-table-footer" onclick="unselect_all();return false;"><i class="fa fa-window-close"></i> <?php echo lng('UnSelectAll') ?> </a></li>
+                <li class="list-inline-item"><a href="#/invert-all" class="btn btn-table-footer" onclick="invert_all();return false;"><i class="fa fa-th-list"></i> <?php echo lng('InvertSelection') ?> </a></li>
                 <li class="list-inline-item"><input type="submit" class="hidden" name="delete" id="a-delete" value="Delete" onclick="return confirm('<?php echo lng('Delete selected files and folders?'); ?>')">
-                    <a href="javascript:document.getElementById('a-delete').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-trash"></i> <?php echo lng('Delete') ?> </a></li>
+                    <a href="javascript:document.getElementById('a-delete').click();" class="btn btn-table-footer"><i class="fa fa-trash"></i> <?php echo lng('Delete') ?> </a></li>
                 <li class="list-inline-item"><input type="submit" class="hidden" name="zip" id="a-zip" value="zip" onclick="return confirm('<?php echo lng('Create archive?'); ?>')">
-                    <a href="javascript:document.getElementById('a-zip').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-file-archive-o"></i> <?php echo lng('Zip') ?> </a></li>
+                    <a href="javascript:document.getElementById('a-zip').click();" class="btn btn-table-footer"><i class="fa fa-file-archive-o"></i> <?php echo lng('Zip') ?> </a></li>
                 <li class="list-inline-item"><input type="submit" class="hidden" name="tar" id="a-tar" value="tar" onclick="return confirm('<?php echo lng('Create archive?'); ?>')">
-                    <a href="javascript:document.getElementById('a-tar').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-file-archive-o"></i> <?php echo lng('Tar') ?> </a></li>
+                    <a href="javascript:document.getElementById('a-tar').click();" class="btn btn-table-footer"><i class="fa fa-file-archive-o"></i> <?php echo lng('Tar') ?> </a></li>
                 <li class="list-inline-item"><input type="submit" class="hidden" name="copy" id="a-copy" value="Copy">
-                    <a href="javascript:document.getElementById('a-copy').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-files-o"></i> <?php echo lng('Copy') ?> </a></li>
+                    <a href="javascript:document.getElementById('a-copy').click();" class="btn btn-table-footer"><i class="fa fa-files-o"></i> <?php echo lng('Copy') ?> </a></li>
             </ul>
         </div>
-        <div class="col-3 d-none d-sm-block"><a href="https://tinyfilemanager.github.io" target="_blank" class="float-right text-muted">Tiny File Manager <?php echo VERSION; ?></a></div>
         <?php else: ?>
-            <div class="col-12"><a href="https://tinyfilemanager.github.io" target="_blank" class="float-right text-muted">Tiny File Manager <?php echo VERSION; ?></a></div>
+            <div class="col-12"><a href="" target="_blank" class="float-right text-muted"> <?php echo VERSION; ?></a></div>
         <?php endif; ?>
     </div>
 
 </form>
+
+<div class="footer" >
+  <p>File Manager - Devops Team -</p>
+</div>
+
 
 <?php
 fm_show_footer();
@@ -3431,7 +3420,7 @@ function fm_show_nav_path($path)
                             </div>
                             <div class="input-group-append btn-group">
                                 <span class="input-group-text dropdown-toggle" id="search-addon3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
-                                  <div class="dropdown-menu dropdown-menu-right">
+                                  <div class="dropdown-menu dropdown-menu-right" >
                                     <a class="dropdown-item" href="<?php echo $path2 = $path ? $path : '.'; ?>" id="js-search-modal" data-toggle="modal" data-target="#searchModal"><?php echo lng('Advanced Search') ?></a>
                                   </div>
                             </div>
@@ -3448,12 +3437,12 @@ function fm_show_nav_path($path)
                     <?php if (FM_USE_AUTH): ?>
                     <li class="nav-item avatar dropdown" style="margin-top: 5px;" >
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user-circle"></i> <?php if(isset($_SESSION[FM_SESSION_ID]['logged'])) { echo $_SESSION[FM_SESSION_ID]['logged']; } ?></a>
-                        <div class="dropdown-menu dropdown-menu-right <?php echo fm_get_theme(); ?>" aria-labelledby="navbarDropdownMenuLink-5">
+                        <div class="dropdown-menu dropdown-menu-right <?php echo fm_get_theme(); ?>" aria-labelledby="navbarDropdownMenuLink-5" >
                             <?php if (!FM_READONLY): ?>
-                            <a title="<?php echo lng('Settings') ?>" class="dropdown-item nav-link" href="?p=<?php echo urlencode(FM_PATH) ?>&amp;settings=1"><i class="fa fa-cog" aria-hidden="true"></i> <?php echo lng('Settings') ?></a>
+                            <a title="<?php echo lng('Settings') ?>" class="dropdown-item nav-link" href="?p=<?php echo urlencode(FM_PATH) ?>&amp;settings=1"><i aria-hidden="true"><svg style="margin-right: 5px; margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1024 1024"><path fill="black" d="M512.5 390.6c-29.9 0-57.9 11.6-79.1 32.8c-21.1 21.2-32.8 49.2-32.8 79.1c0 29.9 11.7 57.9 32.8 79.1c21.2 21.1 49.2 32.8 79.1 32.8c29.9 0 57.9-11.7 79.1-32.8c21.1-21.2 32.8-49.2 32.8-79.1c0-29.9-11.7-57.9-32.8-79.1a110.96 110.96 0 0 0-79.1-32.8zm412.3 235.5l-65.4-55.9c3.1-19 4.7-38.4 4.7-57.7s-1.6-38.8-4.7-57.7l65.4-55.9a32.03 32.03 0 0 0 9.3-35.2l-.9-2.6a442.5 442.5 0 0 0-79.6-137.7l-1.8-2.1a32.12 32.12 0 0 0-35.1-9.5l-81.2 28.9c-30-24.6-63.4-44-99.6-57.5l-15.7-84.9a32.05 32.05 0 0 0-25.8-25.7l-2.7-.5c-52-9.4-106.8-9.4-158.8 0l-2.7.5a32.05 32.05 0 0 0-25.8 25.7l-15.8 85.3a353.44 353.44 0 0 0-98.9 57.3l-81.8-29.1a32 32 0 0 0-35.1 9.5l-1.8 2.1a445.93 445.93 0 0 0-79.6 137.7l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.2 56.5c-3.1 18.8-4.6 38-4.6 57c0 19.2 1.5 38.4 4.6 57l-66 56.5a32.03 32.03 0 0 0-9.3 35.2l.9 2.6c18.1 50.3 44.8 96.8 79.6 137.7l1.8 2.1a32.12 32.12 0 0 0 35.1 9.5l81.8-29.1c29.8 24.5 63 43.9 98.9 57.3l15.8 85.3a32.05 32.05 0 0 0 25.8 25.7l2.7.5a448.27 448.27 0 0 0 158.8 0l2.7-.5a32.05 32.05 0 0 0 25.8-25.7l15.7-84.9c36.2-13.6 69.6-32.9 99.6-57.5l81.2 28.9a32 32 0 0 0 35.1-9.5l1.8-2.1c34.8-41.1 61.5-87.4 79.6-137.7l.9-2.6c4.3-12.4.6-26.3-9.5-35zm-412.3 52.2c-97.1 0-175.8-78.7-175.8-175.8s78.7-175.8 175.8-175.8s175.8 78.7 175.8 175.8s-78.7 175.8-175.8 175.8z"/></svg></i> <?php echo lng('Settings') ?></a>
                             <?php endif ?>
-                            <a title="<?php echo lng('Help') ?>" class="dropdown-item nav-link" href="?p=<?php echo urlencode(FM_PATH) ?>&amp;help=2"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> <?php echo lng('Help') ?></a>
-                            <a title="<?php echo lng('Logout') ?>" class="dropdown-item nav-link" href="?logout=1"><i class="fa fa-sign-out" aria-hidden="true"></i> <?php echo lng('Logout') ?></a>
+                            <a title="<?php echo lng('Info') ?>" class="dropdown-item nav-link" href="?p=<?php echo urlencode(FM_PATH) ?>&amp;info=2"><i aria-hidden="true"><svg style="margin-right: 5px; margin-left: 5px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="black" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0Zm-1-7a1 1 0 1 1 1-1a1 1 0 0 1-1 1Z"/></svg></i> <?php echo lng('Info') ?></a>
+                            <a title="<?php echo lng('Logout') ?>" class="dropdown-item nav-link" href="?logout=1"><i aria-hidden="true"><svg style="margin-right: 2px; margin-left: 6px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1.2em" height="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path fill="#E42500" d="M11 3.5a.5.5 0 0 0-.576-.494l-7 1.07A.5.5 0 0 0 3 4.57v10.86a.5.5 0 0 0 .424.494l7 1.071a.5.5 0 0 0 .576-.494V10h5.172l-.997.874a.5.5 0 0 0 .658.752l1.996-1.75a.5.5 0 0 0 0-.752l-1.996-1.75a.499.499 0 1 0-.658.752l.997.874H11V3.5Zm-2.5 7.75a.75.75 0 1 1 0-1.5a.75.75 0 0 1 0 1.5Zm4 4.75H12v-5h1v4.5a.5.5 0 0 1-.5.5ZM12 8V4h.5a.5.5 0 0 1 .5.5V8h-1Z"/></svg></i> <?php echo lng('Logout') ?></a>
                         </div>
                     </li>
                     <?php else: ?>
@@ -3501,37 +3490,33 @@ global $lang, $root_url, $favicon_path;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Web based File Manager in PHP, Manage your files efficiently and easily with Tiny File Manager">
-    <meta name="author" content="CCP Programmers">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex">
     <?php if($favicon_path) { echo '<link rel="icon" href="'.fm_enc($favicon_path).'" type="image/png">'; } ?>
-    <title><?php echo fm_enc(APP_TITLE) ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body.fm-login-page{ background-color:#007bff;font-size:18px;background-color:#CFDFE8;background-image:url("/background_img.png");background-position-x: center;background-position-y: bottom;background-repeat: no-repeat;}
-        .fm-login-page .brand{ width:121px;overflow:hidden;margin:0 auto;position:relative;z-index:1}
-        .fm-login-page .brand img{ width:100%}
-        .fm-login-page .card-wrapper{ width:380px;margin-top:10%;margin-left:auto;margin-right:auto;}
-        .fm-login-page .card{ border-color:transparent;box-shadow:0 4px 8px rgba(0,0,0,.05); border-radius: 10px;}
+        .fm-login-page {background-color: #EDF4F9; background-image: url("background_login.png"); background-size: cover; background-repeat: no-repeat;background-attachment: fixed;}
+        .fm-login-page .brand{ width:100px;overflow:hidden;margin:0 auto;position:relative;z-index:1;}
+        .card-wrapper{ width:400px; background-color: EDF4F9;margin: 20px;}
         .fm-login-page .card-title{ margin-bottom:1.5rem;font-size:24px;font-weight:400;}
-        .fm-login-page .form-control{ border-width:2.3px}
-        .fm-login-page .form-group label{ width:100%}
-        .fm-login-page .btn.btn-block{ padding:12px 10px;}
-        .fm-login-page .footer{ margin:110px 0;color:#DFDFDF;text-align:center}
-        @media screen and (max-width:425px){
-            .fm-login-page .card-wrapper{ width:90%;margin:0 auto;margin-top:10%;}
-        }
-        @media screen and (max-width:320px){
-            .fm-login-page .card.fat{ padding:0}
-            .fm-login-page .card.fat .card-body{ padding:15px}
-        }
-        .message{ padding:4px 7px;border:1px solid #ddd;background-color:#fff}
+        .card{ border-color:transparent;box-shadow:0 4px 8px rgba(0,0,0,.05); border-radius: 10px; padding: 20px; padding-top: 0px; }
+        .form-control{ border-width:2.3px; }
+        .btn.btn-block.btn-primary{ padding: 15px; margin-top: 40px;}
+        .fm-login-page .footer{ margin:0px 0;color:#888;text-align:center}
+        
+        .message{ padding-left: 20px; padding-top: 5px; padding-bottom: 5px; border-radius: 5px;background-color:#fff;border:1px solid #ddd;}
         .message.ok{ border-color:green;color:green}
         .message.error{ border-color:red;color:red}
         .message.alert{ border-color:orange;color:orange}
         body.fm-login-page.theme-dark {background-color: #2f2a2a;}
-        .theme-dark svg g, .theme-dark svg path {fill: #ffffff; }
+
+        .fm-login-page .login{height: 100vh; color: #000;}
+        .fm-login-page .login-left {padding: 20px; }
+        .fm-login-page .form-signin {margin-top: 50px;}
+
+        .fa.fa-user-circle {color: #007bff;}
+        .card-body > h4 {margin-top: 30px;color: #000; font-weight: 500;font-size: 28px;}
+
     </style>
 </head>
 <body class="fm-login-page <?php echo (FM_THEME == "dark") ? 'theme-dark' : ''; ?>">
@@ -3586,7 +3571,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/<?php echo FM_HIGHLIGHTJS_STYLE ?>.min.css">
     <?php endif; ?>
     <style>
-        body { font-size:14px;color:#000;background:#F7F7F7; }
+        body { font-size:14px;color:#000;background:#EDF4F9; }
         body.navbar-fixed { margin-top:100px; }
         a:hover, a:visited, a:focus { text-decoration:none !important; }
         * { border-radius: 0; }
@@ -3596,7 +3581,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
 
         #search-addon { font-size:14px;border-left-color: #B7B7B7; border-right-color: #fff; border-top-color: #B7B7B7;border-bottom-color: #B7B7B7; border-top-left-radius: 10px;border-bottom-left-radius: 10px;}
         #search-addon2 { background:transparent; border-left-color: #fff; border-top-color: #B7B7B7;border-bottom-color: #B7B7B7; }
-        #search-addon3 { background:transparent; border-color: #B7B7B7; border-top-right-radius: 10px;border-bottom-right-radius: 10px;margin-right: 25px; color: #000;}
+        #search-addon3 { background:#fff; border-color: #B7B7B7; border-top-right-radius: 10px;border-bottom-right-radius: 10px;margin-right: 25px; color: #000;}
 
         .nav-item-upload {margin-right: 20px;}
         .nav-item-newitem {margin-right: 20px;}
@@ -3609,12 +3594,42 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         .nav-item.avatar .dropdown-menu a { font-size:13px; padding: 5px;}
         .fa.fa-user-circle {color: #007bff;}
 
+        .card-header {background-color: #015198;}
+        .path .card .mb-2 .fm-upload-wrapper .card-header {border-radius: 50px;}
+        .nav-link{color: #fff;}
+        .nav-link:hover {color: #fff;}
+
+        .center { display: block;margin-left: auto;margin-right: auto;}
+
+        .btn-upload {margin-left: 50px; background-color: #007bff; color: #fff; padding-left: 30px;padding-right: 30px;}
+
+        .card-header-setting {font-size: 20px; background-color: #015198; padding-left: 20px;padding-right: 20px; color: #fff;}
+        .card-header-info {font-size: 20px; background-color: #015198; padding-left: 20px;padding-right: 20px; color: #fff;}
+
+        .modal-content {border-top-left-radius: 17px;border-top-right-radius: 17px;border-bottom-left-radius: 17px;border-bottom-right-radius: 17px;}
+        .modal-header {background-color: #015198; border-top-left-radius: 15px;border-top-right-radius: 15px;}
+        .modal-body {background-color: #EDF4F9; padding-left: 30px;padding-right: 30px; padding-top: 25px;}
+        .modal-header > h5 {color: #fff;}
+        .modal-header .close{color: #fff;}
+        .modal-footer {border-bottom-left-radius: 15px;border-bottom-right-radius: 15px; background-color: #EDF4F9;border-color: #EDF4F9;}
+
         .bread-crumb { color:#cccccc;font-style:normal; }
         #main-table {border-radius: 10px; }
         #main-table .filename a { color:#222222;}
         .table td, .table th { vertical-align:middle !important;  }
         .table .custom-checkbox-td .custom-control.custom-checkbox, .table .custom-checkbox-header .custom-control.custom-checkbox { min-width:18px;margin-left: 10px;}
         .table-sm td, .table-sm th { padding:.4rem;}
+
+        .btn-table-footer {color: #0085C6; background-color: #fff; border-color: #0085C6; font-size: 10px;font-weight: 500;border-width: 1px;border-radius: 5px;}
+        .btn-table-footer:hover {color: #fff; background-color: #0085C6;}
+
+        .footer { position: fixed;left: 0;bottom: 0;width: 100%;background-color: #26145E;color: white;text-align: center;font-size: 15px; padding-top: 20px; padding-bottom: 10px;}
+
+        .cancel-settings {float: right; color: #fff; font-size: 15px; margin-top: 3px; margin-right: 10px;}
+        .cancel-settings:hover {color: #fff;}
+
+        .cancel-info {float: right; color: #fff; font-size: 15px; margin-top: 3px; margin-right: 10px;}
+        .cancel-info:hover {color: #fff;}
 
         .table-bordered td, .table-bordered th { border:1px solid #f1f1f1; }
         .hidden { display:none  }
@@ -3624,13 +3639,26 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         .fa.fa-caret-right { font-size:1.2em;margin:0 4px;vertical-align:middle;color:#ececec  }
         .fa.fa-home { font-size:1.3em;vertical-align:bottom  }
         .path { margin-bottom:10px  }
-        form.dropzone { min-height:200px;border:2px dashed #007bff;line-height:6rem; }
-        .right { text-align:right  }
-        .center, .close, .login-form { text-align:center  }
-        .message { padding:4px 7px;border:1px solid #ddd;background-color:#fff  }
-        .message.ok { border-color:green;color:green  }
-        .message.error { border-color:red;color:red  }
-        .message.alert { border-color:orange;color:orange  }
+        
+        form.dropzone {height:180px;border:0px;background-color: #EBEBEB; border-radius: 15px;}
+
+        .btn-secondary {color: #72787F; background-color: #EDF4F9;font-size: 18px;border-color: #EDF4F9;}
+        .btn-secondary:hover {color: #fff; background-color: #307DF6;font-size: 18px;border-color: #EDF4F9;}
+
+        .btn-primary {color: #72787F; background-color: #EDF4F9;font-size: 18px;border-color: #EDF4F9;}
+        .btn-primary:hover {color: #fff; background-color: #307DF6;font-size: 18px;border-color: #EDF4F9;}
+
+        .btn-save {background-color: #307DF6; color: white; padding-left: 50px;padding-right: 50px;float: right;padding-top: 10px;padding-bottom: 10px;font-size: 15px;font-weight: 500;margin-right: 20px;}
+        .btn-save:hover {background-color: #307DF6; color: white; }
+
+        .right { text-align:right }
+        .center, .close, .login-form { text-align:center }
+
+        .message { padding-left: 20px; padding-top: 5px; padding-bottom: 5px; border-radius: 5px;background-color:#fff;border:1px solid #ddd;}
+        .message.ok { border-color:green ;color:green}
+        .message.error { border-color:red;color:red }
+        .message.alert { border-color:orange;color:orange }
+
         .preview-img { max-width:100%;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAKklEQVR42mL5//8/Azbw+PFjrOJMDCSCUQ3EABZc4S0rKzsaSvTTABBgAMyfCMsY4B9iAAAAAElFTkSuQmCC)  }
         .inline-actions > a > i > svg{ font-size:1em;margin-left:10px;background:#015198;color:#fff;padding:5px;border-radius:5px; width: 24px; height: 23px; margin-top: 3px; margin-bottom: 3px;}
         .preview-video { position:relative;max-width:100%;height:0;padding-bottom:62.5%;margin-bottom:10px  }
@@ -3663,7 +3691,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         i.fa.fa-file-excel-o { color:#09c55d }
         i.fa.fa-file-powerpoint-o { color:#f6712e }
         i.go-back { font-size:1.2em;color:#007bff; }
-        .main-nav { padding:0.2rem 1rem;box-shadow:0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2)  }
+        .main-nav { padding:0.2rem 1rem;box-shadow: 0px 4px 50px 10px rgba(166, 166, 166, 0.25);  }
         .dataTables_filter { display:none; }
         table.dataTable thead .sorting { cursor:pointer;background-repeat:no-repeat;background-position:center right;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7XQMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC'); }
         table.dataTable thead .sorting_asc { cursor:pointer;background-repeat:no-repeat;background-position:center right;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg=='); }
@@ -3672,7 +3700,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         .footer-action li { margin-bottom:10px; }
         .app-v-title { font-size:24px;font-weight:300;letter-spacing:-.5px;text-transform:uppercase; }
         hr.custom-hr { border-top:1px dashed #8c8b8b;border-bottom:1px dashed #fff; }
-        .ekko-lightbox .modal-dialog { max-width:98%; }
+        .ekko-lightbox .modal-dialog { max-width:98%;}
         .ekko-lightbox-item.fade.in.show .row { background:#fff; }
         .ekko-lightbox-nav-overlay { display:flex !important;opacity:1 !important;height:auto !important;top:50%; }
         .ekko-lightbox-nav-overlay a { opacity:1 !important;width:auto !important;text-shadow:none !important;color:#3B3B3B; }
@@ -3737,8 +3765,8 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         <div class="modal-dialog" role="document">
             <div class="modal-content <?php echo fm_get_theme(); ?>">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="newItemModalLabel"><i class="fa fa-plus-square fa-fw"></i><?php echo lng('CreateNewItem') ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="newItemModalLabel"><svg style="margin-right: 20px; margin-left:10px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="white" d="M3 6.25A3.25 3.25 0 0 1 6.25 3h11.5A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25Zm9.75 1.5a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z"/></svg></i><?php echo lng('CreateNewItem') ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -3758,9 +3786,9 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
                     <p class="mt-3"><label for="newfilename"><?php echo lng('ItemName') ?> </label></p>
                     <input type="text" name="newfilename" id="newfilename" value="" class="form-control">
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="fa fa-times-circle"></i> <?php echo lng('Cancel') ?></button>
-                    <button type="button" class="btn btn-success" onclick="newfolder('<?php echo fm_enc(FM_PATH) ?>');return false;"><i class="fa fa-check-circle"></i> <?php echo lng('CreateNow') ?></button>
+                <div class="modal-footer" >
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" ><i class="fa fa-times-circle"></i> <?php echo lng('Cancel') ?></button>
+                        <button type="button" class="btn btn-primary" onclick="newfolder('<?php echo fm_enc(FM_PATH) ?>');return false;"><i class="fa fa-check-circle"></i> <?php echo lng('CreateNow') ?></button>
                 </div>
             </div>
         </div>
@@ -3783,7 +3811,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" style="border-radius: 15px;">
             <form action="" method="post">
                 <div class="lds-facebook"><div></div><div></div><div></div></div>
                 <ul id="search-wrapper">
@@ -3794,6 +3822,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         </div>
       </div>
     </div>
+
     <script type="text/html" id="js-tpl-modal">
         <div class="modal fade" id="js-ModalCenter-<%this.id%>" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

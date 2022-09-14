@@ -1,16 +1,5 @@
 <?php
 
-/*
-#################################################################################################################
-This is an OPTIONAL configuration file. rename this file into config.php to use this configuration 
-The role of this file is to make updating of "tinyfilemanager.php" easier.
-So you can:
--Feel free to remove completely this file and configure "tinyfilemanager.php" as a single file application.
-or
--Put inside this file all the static configuration you want and forgot to configure "tinyfilemanager.php".
-#################################################################################################################
-*/
-
 // Auth with login/password
 // set true/false to enable/disable it
 // Is independent from IP white- and blacklisting

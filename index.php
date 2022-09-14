@@ -2,36 +2,21 @@
 //Default Configuration
 $CONFIG = '{"lang":"en","error_reporting":false,"show_hidden":false,"hide_Cols":false,"calc_folder":false,"theme":"light"}';
 
-
-/**
- * H3K | Tiny File Manager V2.4.7
- * CCP Programmers | ccpprogrammers@gmail.com
- * https://tinyfilemanager.github.io
- */
-
 //TFM version
-define('VERSION', '2.4.7');
+define('VERSION', '');
 
 //Application Title
 define('APP_TITLE', 'File Manager');
 
-// --- EDIT BELOW CONFIGURATION CAREFULLY ---
-
-// Auth with login/password
-// set true/false to enable/disable it
-// Is independent from IP white- and blacklisting
 $use_auth = true;
 
 // Login user name and password
-// Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
-// Generate secure password hash - https://tinyfilemanager.github.io/docs/pwd.html
 $auth_users = array(
     'admin' => '$2y$10$/K.hjNr84lLNDt8fTXjoI.DBp6PpeyoJ.mGwrrLuCZfAwfSAGqhOW', //admin@123
     'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
 // Readonly users
-// e.g. array('users', 'guest', ...)
 $readonly_users = array(
     'user'
 );
@@ -315,9 +300,10 @@ if ($use_auth) {
         fm_show_header_login();
         ?>
 
+<!-- Login page -->
     <section class="h-100" >
-        <div class="row justify-content-center w-50 h-100" style="margin-top: 60px;">
-            <div class="card-wrapper " style=" padding: 70px 0;">
+        <div class="row h-100" >
+            <div class="card-wrapper">
                 <div class="card fat <?php echo fm_get_theme(); ?>" >
                     <div class="card-body" >
                         <h4 >Login to your account</h4>
@@ -1408,6 +1394,7 @@ if (isset($_GET['settings']) && !FM_READONLY) {
     global $cfg, $lang, $lang_list;
     ?>
 
+<!-- Settings -->
     <div class="col-md-8 offset-md-2 pt-3">
         <div class="card mb-2 <?php echo fm_get_theme(); ?>" style="border-radius:15px;" >
             <h6 class="card-header-setting" style="border-top-left-radius: 15px;border-top-right-radius: 15px;padding-top:20px;padding-bottom:20px;">
@@ -1488,16 +1475,6 @@ if (isset($_GET['settings']) && !FM_READONLY) {
                     </div>
 
                     <div class="form-group row">
-                        <label for="js-3-1" class="col-sm-3 col-form-label"><?php echo lng('Theme') ?></label>
-                        <div class="col-sm-5">
-                            <select class="form-control" id="js-3-0" name="js-theme-3" style="width:100px;">
-                         <option value='light' <?php if($theme == "light"){echo "selected";} ?>><?php echo lng('light') ?></option>
-                         <option value='dark' <?php if($theme == "dark"){echo "selected";} ?>><?php echo lng('dark') ?></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <div class="col-sm-12" >
                             <button type="submit" class="btn btn-save"> <?php echo lng('Save'); ?></button>
                         </div>
@@ -1510,7 +1487,7 @@ if (isset($_GET['settings']) && !FM_READONLY) {
 
     <div class="footer" >
              <p>File Manager - Devops Team -</p>
-        </div>
+    </div>
     <?php
     fm_show_footer();
     exit;
@@ -1881,8 +1858,8 @@ if (isset($_GET['chmod']) && !FM_READONLY && !FM_IS_WIN) {
 
     ?>
     <div class="path">
-        <div class="card mb-2 <?php echo fm_get_theme(); ?>">
-            <h6 class="card-header">
+        <div class="card mb-2 <?php echo fm_get_theme(); ?>" style="border-top-left-radius: 15px; border-top-right-radius: 15px;border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+            <h6 class="card-header-permission" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                 <?php echo lng('ChangePermissions') ?>
             </h6>
             <div class="card-body">
@@ -2162,15 +2139,15 @@ $tableTheme = (FM_THEME == "dark") ? "text-white bg-dark table-dark" : "bg-white
             <div class="col-12"><a href="" target="_blank" class="float-right text-muted"> <?php echo VERSION; ?></a></div>
         <?php endif; ?>
     </div>
-
 </form>
 
-<div class="footer" >
-  <p>File Manager - Devops Team -</p>
-</div>
-
+<!-- <footer class="footer">
+    <p>File Manager - Devops Team -</p>
+</footer> -->
 
 <?php
+
+
 fm_show_footer();
 
 //--- END
@@ -3497,12 +3474,12 @@ global $lang, $root_url, $favicon_path;
     <style>
         .fm-login-page {background-color: #EDF4F9; background-image: url("background_login.png"); background-size: cover; background-repeat: no-repeat;background-attachment: fixed;}
         .fm-login-page .brand{ width:100px;overflow:hidden;margin:0 auto;position:relative;z-index:1;}
-        .card-wrapper{ width:400px; background-color: EDF4F9;margin: 20px;}
+        .card-wrapper{ width:400px; background-color: EDF4F9;margin: 20px;position: absolute;top: 15%;left: 10%;}
         .fm-login-page .card-title{ margin-bottom:1.5rem;font-size:24px;font-weight:400;}
         .card{ border-color:transparent;box-shadow:0 4px 8px rgba(0,0,0,.05); border-radius: 10px; padding: 20px; padding-top: 0px; }
         .form-control{ border-width:2.3px; }
         .btn.btn-block.btn-primary{ padding: 15px; margin-top: 40px;}
-        .fm-login-page .footer{ margin:0px 0;color:#888;text-align:center}
+        .fm-login-page .footer{ margin:0px 0;color:#888;text-align:center; margin-top: 20px;}
         
         .message{ padding-left: 20px; padding-top: 5px; padding-bottom: 5px; border-radius: 5px;background-color:#fff;border:1px solid #ddd;}
         .message.ok{ border-color:green;color:green}
@@ -3605,6 +3582,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
 
         .card-header-setting {font-size: 20px; background-color: #015198; padding-left: 20px;padding-right: 20px; color: #fff;}
         .card-header-info {font-size: 20px; background-color: #015198; padding-left: 20px;padding-right: 20px; color: #fff;}
+        .card-header-permission {font-size: 20px; background-color: #015198; padding: 20px; color: #fff;}
 
         .modal-content {border-top-left-radius: 17px;border-top-right-radius: 17px;border-bottom-left-radius: 17px;border-bottom-right-radius: 17px;}
         .modal-header {background-color: #015198; border-top-left-radius: 15px;border-top-right-radius: 15px;}
@@ -3614,7 +3592,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
         .modal-footer {border-bottom-left-radius: 15px;border-bottom-right-radius: 15px; background-color: #EDF4F9;border-color: #EDF4F9;}
 
         .bread-crumb { color:#cccccc;font-style:normal; }
-        #main-table {border-radius: 10px; }
+        #main-table {border-radius: 10px;}
         #main-table .filename a { color:#222222;}
         .table td, .table th { vertical-align:middle !important;  }
         .table .custom-checkbox-td .custom-control.custom-checkbox, .table .custom-checkbox-header .custom-control.custom-checkbox { min-width:18px;margin-left: 10px;}
@@ -3788,7 +3766,7 @@ $isStickyNavBar = $sticky_navbar ? 'navbar-fixed' : 'navbar-normal';
                 </div>
                 <div class="modal-footer" >
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal" ><i class="fa fa-times-circle"></i> <?php echo lng('Cancel') ?></button>
-                        <button type="button" class="btn btn-primary" onclick="newfolder('<?php echo fm_enc(FM_PATH) ?>');return false;"><i class="fa fa-check-circle"></i> <?php echo lng('CreateNow') ?></button>
+                        <button type="button" class="btn btn-outline-primary" onclick="newfolder('<?php echo fm_enc(FM_PATH) ?>');return false;"><i class="fa fa-check-circle"></i> <?php echo lng('CreateNow') ?></button>
                 </div>
             </div>
         </div>

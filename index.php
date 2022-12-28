@@ -1239,7 +1239,7 @@ if (isset($_GET['upload']) && !FM_READONLY) {
                 <form action="<?php echo htmlspecialchars(FM_SELF_URL) . '?p=' . fm_enc(FM_PATH) ?>" class="dropzone card-tabs-container" id="fileUploader" enctype="multipart/form-data">
                     <input type="hidden" name="p" value="<?php echo fm_enc(FM_PATH) ?>">
                     <input type="hidden" name="fullpath" id="fullpath" value="<?php echo fm_enc(FM_PATH) ?>">
-                    <img class="center" src="/upload.png" width="70px" height="45px" alt="img-upload" style="margin-top: 25px;">
+                    <img class="center" src="/project_assets/upload.png" width="70px" height="45px" alt="img-upload" style="margin-top: 25px;">
                     <div class="fallback">
                         <input name="file" type="file" multiple/>
                     </div>
@@ -1258,7 +1258,7 @@ if (isset($_GET['upload']) && !FM_READONLY) {
         </div>
 
         <div class="footer" >
-             <p>File Manager - Devops Team -</p>
+             <p>B-Jak File Manager - Devops Team -</p>
         </div>
 
     </div>
@@ -1486,7 +1486,7 @@ if (isset($_GET['settings']) && !FM_READONLY) {
     </div>
 
     <div class="footer" >
-             <p>File Manager - Devops Team -</p>
+             <p>B-Jak File Manager - Devops Team -</p>
     </div>
     <?php
     fm_show_footer();
@@ -1508,7 +1508,7 @@ if (isset($_GET['info'])) {
             <div class="card-body">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <p><h3>File Manager </h3></p>
+                        <p><h3>B-Jak File Manager </h3></p>
                         <p>Developer : Balmon Jakarta Devops Team </p>
                         <p>Mail Us : <a href="mailto:example@gmail.com">example@gmail.com</a> </p>
                     </div>
@@ -3363,7 +3363,7 @@ function fm_show_nav_path($path)
     }
     ?>
     <nav class="navbar navbar-expand-lg <?php echo $getTheme; ?> mb-4 main-nav <?php echo $isStickyNavBar ?>">
-        <img class="navbar-icon" src="/logo.png", alt="nav_logo", width="50px">
+        <img class="navbar-icon" src="/project_assets/logo.png", alt="nav_logo", width="50px">
         <a class="navbar-brand" href="?p="> <?php echo lng('AppTitle') ?> </a>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -3472,7 +3472,7 @@ global $lang, $root_url, $favicon_path;
     <?php if($favicon_path) { echo '<link rel="icon" href="'.fm_enc($favicon_path).'" type="image/png">'; } ?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        .fm-login-page {background-color: #EDF4F9; background-image: url("background_login.png"); background-size: cover; background-repeat: no-repeat;background-attachment: fixed;}
+        .fm-login-page {background-color: #EDF4F9; background-image: url("/project_assets/bg_login.png"); background-size: cover; background-repeat: no-repeat;background-attachment: fixed;}
         .fm-login-page .brand{ width:100px;overflow:hidden;margin:0 auto;position:relative;z-index:1;}
         .card-wrapper{ width:400px; background-color: EDF4F9;margin: 20px;position: absolute;top: 15%;left: 10%;}
         .fm-login-page .card-title{ margin-bottom:1.5rem;font-size:24px;font-weight:400;}
@@ -4087,7 +4087,7 @@ function lng($txt) {
     global $lang;
 
     // English Language
-    $tr['en']['AppName']        = 'Tiny File Manager';      $tr['en']['AppTitle']           = 'File Manager';
+    $tr['en']['AppName']        = 'Tiny File Manager';      $tr['en']['AppTitle']           = 'B-Jak File Manager';
     $tr['en']['Login']          = 'Sign in';                $tr['en']['Username']           = 'Username';
     $tr['en']['Password']       = 'Password';               $tr['en']['Logout']             = 'Sign Out';
     $tr['en']['Move']           = 'Move';                   $tr['en']['Copy']               = 'Copy';
